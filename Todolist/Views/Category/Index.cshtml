@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6"><h2 class="text-primary">Category List</h2></div>
+        <div class="col 6 text-end">
+            <a  asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-square-fill"></i>&nbsp; Create new Category
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+<table class="table table-border table-striped " style="width:100%">
+    <thead>
+        <tr>
+            <th style="color:white">Category Name</th>
+            <th style="color:white">Display Order</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td idth:"50%" style="color:white">@obj.Name</td>
+                <td idth:"30%" style=" color:white">@obj.DisplayOrder</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Edit" class="btn btn-primary mx-2" asp-route-id="@obj.Id"> <i class="bi bi-pencil-square"></i> Edit</a>
+                        <a asp-controller="Category" asp-action="Delete" class="btn btn-unique mx-2" asp-route-id="@obj.Id"><i class="bi bi-trash-fill"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    
+</div>
+
